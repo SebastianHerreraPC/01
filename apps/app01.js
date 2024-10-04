@@ -100,13 +100,12 @@ document.addEventListener("DOMContentLoaded", function () {
     formAdd.reset();
     popupAddClose();
   });
-
-  // function addPlace() {
-  //   const nodeTemplate = document.querySelector("#card__template").content;
-  //   const newCard = document.querySelector('.card').cloneNode(true);
-  //   newCard.querySelector('.')
-
-  // }
+  cardContainer.addEventListener("click", function (evt) {
+    if (evt.target.classList.contains("card__trash-button")) {
+      const cardToDelete = evt.target.closest(".card");
+      cardToDelete.remove();
+    }
+  });
 
   console.log(typeof document.querySelector(".popup__input-lugar").value);
 });
