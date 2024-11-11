@@ -60,21 +60,6 @@
   display: none;
 }
 
-.popup__input:valid {
-  border-bottom: 1px solid green;
-}
-
-.popup__input:invalid {
-  color: red;
-  border-bottom: 1px solid red;
-}
-
-.pop__up-error {
-  color: red;
-  background-color: transparent;
-  font-size: 12px;
-  margin-top: 5px;
-}
 .popup__image {
   height: 100vh;
 }
