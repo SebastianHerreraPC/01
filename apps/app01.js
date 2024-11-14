@@ -110,4 +110,12 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.toggle("active");
     });
   });
+  const trashButton = document.querySelectorAll(".card__trash-button");
+
+  trashButton.forEach((button) => {
+    button.addEventListener("click", function () {
+      const cardToRemove = this.closest(".card");
+      cardToRemove.remove();
+    });
+  });
 });
