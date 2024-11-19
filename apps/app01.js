@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputjob = document.querySelector(".popup__input-job");
   const profileJob = document.querySelector(".profile__job");
   const popupEdit = document.querySelector(".popup__edit");
-  const formElement = document.querySelector(".popup__form");
 
   function popupOpen() {
     popupEdit.style.display = "block";
@@ -117,5 +116,27 @@ document.addEventListener("DOMContentLoaded", function () {
       const cardToRemove = this.closest(".card");
       cardToRemove.remove();
     });
+  });
+
+  //validador
+  const formElement = document.querySelector(".popup__form");
+  const popupInput = document.querySelector(".popup__input");
+
+  const showInputError = (element) => {
+    element.classList.add("form__input_error");
+  };
+  const hideInputError = (element) => {
+    element.classList.remove("form__input_error");
+  };
+
+  const isValid = () => {
+    if (!popupInput.validity.valid) {
+      showInputError(popupInput);
+    } else {
+      hideInputError(popupInput);
+    }
+  };
+  formElement.addEventListener("submit", function (evt) {
+    evt.preventDefault();
   });
 });
