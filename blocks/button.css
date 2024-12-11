@@ -85,6 +85,9 @@
   background-color: black;
   border-radius: 2px;
 }
+.button__submit-disabeled {
+  background-color: gray;
+}
 
 .popup__close-button:hover {
   transform: scale(1.1);
