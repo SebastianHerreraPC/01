@@ -121,23 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
   //validador
   const formElement = document.querySelector(".popup__form");
   const popupInput = document.querySelector(".popup__input");
-  const submitButton = document.querySelector(".button__submit");
-
-  function setSubmitButtonState(isFormValid) {
-    if (isFormValid) {
-      submitButton.setAttribute("disabled");
-      submitButton.classList.remove("button__submit_disabeled");
-    } else {
-      submitButton.removeAttribute("disabled", true);
-      submitButton.classList.add("button__submit_disabeled");
-    }
-  }
-
-  formElement.addEventListener("input", (evt) => {
-    console.log(evt);
-    const isValid = inputName.value.length > 0 && inputjob.value.length > 0;
-    setSubmitButtonState(isValid);
-  });
 
   formElement.addEventListener("submit", function (evt) {
     evt.preventDefault();
