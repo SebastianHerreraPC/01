@@ -120,13 +120,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //validador
   const formElement = document.querySelector(".popup__form");
-  const popupInput = document.querySelector(".popup__input");
+  const formInput = document.querySelector(".popup__input");
+
+  const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`.${formElement.id}-error`);
+    inputElement.classList.add("form__input_type_error");
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add("form__input-error_active");
+  };
+
+  const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`.${formInput.id}-error`);
+    inputElement.classList.remove("form__input_type_error");
+    errorElement.classList.remove("form__input-error_active");
+    errorElement.textContent = "";
+  };
+
+  const checkInputValidity = () => {
+    if (!formInput.validity.valid) {
+      showInputError(formElement, formInput, formInput.validationMessage);
+    } else {
+      hideInputError(formElement, formInput);
+    }
+  };
 
   formElement.addEventListener("submit", function (evt) {
     evt.preventDefault();
   });
 
-  popupInput.addEventListener("input", function (evt) {
-    console.log("evt".target.validity);
+  formInput.addEventListener("input", function () {
+    checkInputValidity();
   });
 });
