@@ -119,36 +119,69 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   //validador
-  const formElement = document.querySelector(".popup__form");
-  const formInput = document.querySelector(".popup__input");
+  const editForm = document.querySelector(".popup__form-edit");
+  const addForm = document.querySelector(".popup__form-add");
 
-  const showInputError = (formElement, inputElement, errorMessage) => {
-    const errorElement = formElement.querySelector(`.${formElement.id}-error`);
-    inputElement.classList.add("form__input_type_error");
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add("form__input-error_active");
-  };
+  function showError(input, errorId, message) {
+    const errorElement = document.getElementById(errorId);
+    input.classList.add("input-error");
+    errorElement.textContent = message;
+    errorElement.style.display = "block";
+  }
 
-  const hideInputError = (formElement, inputElement) => {
-    const errorElement = formElement.querySelector(`.${formInput.id}-error`);
-    inputElement.classList.remove("form__input_type_error");
-    errorElement.classList.remove("form__input-error_active");
+  function hideError(input, errorId) {
+    const errorElement = document.getElementById(errorId);
+    input.classList.remove("input-error");
     errorElement.textContent = "";
-  };
+    errorElement.style.display = "none";
+  }
 
-  const checkInputValidity = () => {
-    if (!formInput.validity.valid) {
-      showInputError(formElement, formInput, formInput.validationMessage);
-    } else {
-      hideInputError(formElement, formInput);
+  function validateField(input, errorId) {
+    if (!input.validity.valid) {
+      if (input.validity.valueMissing) {
+        showError(input, errorId, "Este campo es obligatorio");
+      } else if (input.validity.tooShort) {
+        showError(
+          input,
+          errorId,
+          `El texto debe tener al menos ${input.minLength} caracteres`
+        );
+      } else if (input.validity.typeMismatch && input.type === "url") {
+        showError(input, errorId, "Introduce un enlace válido");
+      }
+      return false;
     }
-  };
+    hideError(input, errorId);
+    return true;
+  }
 
-  formElement.addEventListener("submit", function (evt) {
-    evt.preventDefault();
-  });
+  function validateForm(form) {
+    const inputs = form.querySelectorAll("input");
+    let isValid = true;
 
-  formInput.addEventListener("input", function () {
-    checkInputValidity();
+    inputs.forEach((input) => {
+      const errorId = input.name + "-error";
+      if (!validateField(input, errorId)) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  }
+
+  [editForm, addForm].forEach((form) => {
+    const inputs = form.querySelectorAll("input");
+    inputs.forEach((input) => {
+      const errorId = input.name + "-error";
+      input.addEventListener("input", () => validateField(input, errorId));
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (validateForm(form)) {
+        alert("Formulario enviado exitosamente");
+        form.reset();
+      }
+    });
   });
 });

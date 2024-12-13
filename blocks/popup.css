@@ -33,12 +33,16 @@
   display: flex;
   margin-left: 30px;
   flex-direction: column;
+  max-height: 200px;
 }
 
 .form__input_error {
   border-bottom: 1px solid red;
 }
 .form__input-error_active {
+  background-color: white;
+  font-size: 10px;
+  color: red;
   display: none;
 }
 
