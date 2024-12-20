@@ -53,11 +53,8 @@
                     minlength="2"
                     name="name"
                     required
+                    id="popup__input-name"
                   />
-                  <span id="name-error" class="form__input-error_active"
-                    >Error aqui</span
-                  >
-
                   <input
                     class="popup__input popup__input-job"
                     type="text"
@@ -66,10 +63,8 @@
                     minlength="2"
                     name="job"
                     required
+                    id="popup__input-job"
                   />
-                  <span id="job-error" class="form__input-error_active"
-                    >Error aqui</span
-                  >
 
                   <button class="button button__submit" type="submit">
                     Guardar
@@ -83,12 +78,7 @@
               <div class="popup__content">
                 <button class="popup__close-add-button button"></button>
                 <p class="popup__title">Nuevo Lugar</p>
-                <form
-                  action=""
-                  class="popup__form popup__form-add"
-                  novalidate
-                  name="person"
-                >
+                <form action="" class="popup__form popup__form-add" novalidate>
                   <input
                     maxlength="30"
                     minlength="2"
@@ -99,9 +89,6 @@
                     name="place"
                     required
                   />
-                  <span id="place-error" class="form__input-error_active"
-                    >Error aqui</span
-                  >
                   <input
                     class="popup__input popup__input-url"
                     id="popup__input-url"
@@ -111,9 +98,6 @@
                     name="url"
                     required
                   />
-                  <span id="url-error" class="form__input-error_active"
-                    >Error aqui</span
-                  >
 
                   <button class="button button__submit" type="submit">
                     Crear
