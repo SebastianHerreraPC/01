@@ -32,9 +32,7 @@ const coche = {
   año: 1969,
 
   informacionCoche() {
-    console.log(
-      `El coche es un ${this.marca} ${this.modelo} del año ${this.año}`
-    );
+    console.log(`El coche es ${this.marca} ${this.modelo} del año ${this.año}`);
   },
 };
 coche.informacionCoche();
