@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  initialCards.forEach(function (item) {
+  initialCards.forEach((item) => {
     const newCard = nodeTemplate.content.querySelector(".card").cloneNode(true);
     newCard.querySelector(".card__image").src = item.link;
     newCard.querySelector(".card__text").textContent = item.name;
