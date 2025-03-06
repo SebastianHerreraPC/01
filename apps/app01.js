@@ -1,9 +1,11 @@
+import { Cards } from "./cards.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const editButton = document.querySelector(".profile__edit-button");
   const closeButton = document.querySelector(".popup__close-button");
   const profileName = document.querySelector(".profile__name-text");
   const inputName = document.querySelector(".popup__input-name");
-  const inputjob = document.querySelector(".popup__input-job");
+  const inputJob = document.querySelector(".popup__input-job");
   const profileJob = document.querySelector(".profile__job");
   const popupEdit = document.querySelector(".popup__edit");
 
@@ -16,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   editButton.addEventListener("click", function () {
     popupOpen();
     inputName.value = profileName.textContent;
-    inputjob.value = profileJob.textContent;
-    inputjob.value = "";
+    inputJob.value = profileJob.textContent;
+    inputJob.value = "";
     inputName.value = "";
   });
   closeButton.addEventListener("click", function (evt) {
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   popupEdit.addEventListener("submit", function (evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
-    profileJob.textContent = inputjob.value;
+    profileJob.textContent = inputJob.value;
 
     popupClose();
   });
@@ -34,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //add images
   const formAdd = document.querySelector(".popup__form-add");
   const popupAdd = document.querySelector(".popup__add");
-  let placeName = document.querySelector(".popup__input-lugar");
-  let placeImg = document.querySelector(".popup__input-url");
+  const placeName = document.querySelector(".popup__input-lugar");
+  const placeImg = document.querySelector(".popup__input-url");
   const cardContainer = document.querySelector(".cards__container");
   const nodeTemplate = document.querySelector("#card__template");
   const addButton = document.querySelector(".profile__add-button");
@@ -68,10 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   initialCards.forEach((item) => {
-    const newCard = nodeTemplate.content.querySelector(".card").cloneNode(true);
-    newCard.querySelector(".card__image").src = item.link;
-    newCard.querySelector(".card__text").textContent = item.name;
-    cardContainer.prepend(newCard);
+    const card = new Cards(item.link, item.name);
+    const cardElement = card.generateCard();
+
+    document.querySelector(".cards__container").append(cardElement);
   });
 
   function popupAddOpen() {
