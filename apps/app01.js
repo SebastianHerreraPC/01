@@ -102,8 +102,8 @@ document.addEventListener("DOMContentLoaded", function () {
     formAdd.reset();
     popupAddClose();
   });
-  console.log(typeof Cards); // Debe decir 'function'
-  console.log(new Cards("url", "nombre")); // Debe mostrar un objeto con métodos
+  console.log(typeof Cards);
+  console.log(new Cards("url", "nombre"));
 
   const likeButton = document.querySelectorAll(".card__like-button");
   likeButton.forEach((button) => {
@@ -162,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return isValid;
   }
-
   [editForm, addForm].forEach((form) => {
     const inputs = form.querySelectorAll("input");
     inputs.forEach((input) => {
