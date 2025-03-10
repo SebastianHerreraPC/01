@@ -11,15 +11,18 @@ export class Cards {
 
     return newCard;
   }
-  generateCard() {
-    this._element = this._getTemplate();
-    this._element.querySelector(".card__image").src = this._image;
-    this._element.querySelector(".card__text").textContent = this._text;
+  setEventListeners() {
     this._element
       .querySelector(".card__trash-button")
       .addEventListener("click", () => {
         this._element.remove();
       });
+  }
+  generateCard() {
+    this._element = this._getTemplate();
+    this._element.querySelector(".card__image").src = this._image;
+    this._element.querySelector(".card__text").textContent = this._text;
+    this.setEventListeners();
 
     return this._element;
   }

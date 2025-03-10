@@ -95,28 +95,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const value = placeName.value;
     const linkValue = placeImg.value;
     console.log(linkValue);
-    const newCard = nodeTemplate.content.querySelector(".card").cloneNode(true);
-    newCard.querySelector(".card__image").src = linkValue;
-    newCard.querySelector(".card__text").textContent = value;
-    cardContainer.prepend(newCard);
+    const newCard = new Cards(linkValue, value);
+    const cardElement = newCard.generateCard();
+
+    cardContainer.prepend(cardElement);
     formAdd.reset();
     popupAddClose();
   });
-
-  console.log(typeof document.querySelector(".popup__input-lugar").value);
+  console.log(typeof Cards); // Debe decir 'function'
+  console.log(new Cards("url", "nombre")); // Debe mostrar un objeto con métodos
 
   const likeButton = document.querySelectorAll(".card__like-button");
   likeButton.forEach((button) => {
     button.addEventListener("click", function () {
       this.classList.toggle("active");
-    });
-  });
-  const trashButton = document.querySelectorAll(".card__trash-button");
-
-  trashButton.forEach((button) => {
-    button.addEventListener("click", function () {
-      const cardToRemove = this.closest(".card");
-      cardToRemove.remove();
     });
   });
 
