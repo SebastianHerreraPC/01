@@ -103,13 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
     formAdd.reset();
     popupAddClose();
   });
-  console.log(typeof Cards);
-  console.log(new Cards("url", "nombre"));
 
   const likeButton = document.querySelectorAll(".card__like-button");
-
-  // console.log("Formulario de edición:", formEdit);
-  // console.log("Formulario de edición:", formAdd);
 
   if (formEdit) {
     const validatorEdit = new FormValidator(formEdit);
@@ -120,3 +115,8 @@ document.addEventListener("DOMContentLoaded", function () {
     validatorAdd.attachValidation();
   }
 });
+
+// console.log(typeof Cards);
+// console.log(new Cards("url", "nombre"));
+// console.log("Formulario de edición:", formEdit);
+// console.log("Formulario de edición:", formAdd);
