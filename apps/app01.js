@@ -1,5 +1,7 @@
 import { Cards } from "./cards.js";
 
+import { formValidator } from "./formValidator.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const editButton = document.querySelector(".profile__edit-button");
   const closeButton = document.querySelector(".popup__close-button");
@@ -100,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cardContainer.prepend(cardElement);
     formAdd.reset();
+    formValidator.resetErrors();
     popupAddClose();
   });
   console.log(typeof Cards);
@@ -113,68 +116,68 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   //validador
-  const editForm = document.querySelector(".popup__form-edit");
-  const addForm = document.querySelector(".popup__form-add");
+  // const editForm = document.querySelector(".popup__form-edit");
+  // const addForm = document.querySelector(".popup__form-add");
 
-  function showError(input, errorId, message) {
-    const errorElement = document.getElementById(errorId);
-    input.classList.add("input-error");
-    errorElement.textContent = message;
-    errorElement.style.display = "block";
-  }
+  // function showError(input, errorId, message) {
+  //   const errorElement = document.getElementById(errorId);
+  //   input.classList.add("input-error");
+  //   errorElement.textContent = message;
+  //   errorElement.style.display = "block";
+  // }
 
-  function hideError(input, errorId) {
-    const errorElement = document.getElementById(errorId);
-    input.classList.remove("input-error");
-    errorElement.textContent = "";
-    errorElement.style.display = "none";
-  }
+  // function hideError(input, errorId) {
+  //   const errorElement = document.getElementById(errorId);
+  //   input.classList.remove("input-error");
+  //   errorElement.textContent = "";
+  //   errorElement.style.display = "none";
+  // }
 
-  function validateField(input, errorId) {
-    if (!input.validity.valid) {
-      if (input.validity.valueMissing) {
-        showError(input, errorId, "Este campo es obligatorio");
-      } else if (input.validity.tooShort) {
-        showError(
-          input,
-          errorId,
-          `El texto debe tener al menos ${input.minLength} caracteres`
-        );
-      } else if (input.validity.typeMismatch && input.type === "url") {
-        showError(input, errorId, "Introduce un enlace válido");
-      }
-      return false;
-    }
-    hideError(input, errorId);
-    return true;
-  }
+  // function validateField(input, errorId) {
+  //   if (!input.validity.valid) {
+  //     if (input.validity.valueMissing) {
+  //       showError(input, errorId, "Este campo es obligatorio");
+  //     } else if (input.validity.tooShort) {
+  //       showError(
+  //         input,
+  //         errorId,
+  //         `El texto debe tener al menos ${input.minLength} caracteres`
+  //       );
+  //     } else if (input.validity.typeMismatch && input.type === "url") {
+  //       showError(input, errorId, "Introduce un enlace válido");
+  //     }
+  //     return false;
+  //   }
+  //   hideError(input, errorId);
+  //   return true;
+  // }
 
-  function validateForm(form) {
-    const inputs = form.querySelectorAll("input");
-    let isValid = true;
+  // function validateForm(form) {
+  //   const inputs = form.querySelectorAll("input");
+  //   let isValid = true;
 
-    inputs.forEach((input) => {
-      const errorId = input.name + "-error";
-      if (!validateField(input, errorId)) {
-        isValid = false;
-      }
-    });
+  //   inputs.forEach((input) => {
+  //     const errorId = input.name + "-error";
+  //     if (!validateField(input, errorId)) {
+  //       isValid = false;
+  //     }
+  //   });
 
-    return isValid;
-  }
-  [editForm, addForm].forEach((form) => {
-    const inputs = form.querySelectorAll("input");
-    inputs.forEach((input) => {
-      const errorId = input.name + "-error";
-      input.addEventListener("input", () => validateField(input, errorId));
-    });
+  //   return isValid;
+  // }
+  // [editForm, addForm].forEach((form) => {
+  //   const inputs = form.querySelectorAll("input");
+  //   inputs.forEach((input) => {
+  //     const errorId = input.name + "-error";
+  //     input.addEventListener("input", () => validateField(input, errorId));
+  //   });
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (validateForm(form)) {
-        alert("Formulario enviado exitosamente");
-        form.reset();
-      }
-    });
-  });
+  //   form.addEventListener("submit", (e) => {
+  //     e.preventDefault();
+  //     if (validateForm(form)) {
+  //       alert("Formulario enviado exitosamente");
+  //       form.reset();
+  //     }
+  //   });
+  // });
 });
