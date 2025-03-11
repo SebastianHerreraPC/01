@@ -1,7 +1,10 @@
-class formValidator {
+export class FormValidator {
   constructor(form) {
     this.form = form;
     this.inputs = form.querySelectorAll("input");
+  }
+  validate() {
+    console.log("Validando formulario...");
   }
 
   showError(input, errorId, message) {

@@ -1,6 +1,5 @@
 import { Cards } from "./cards.js";
-
-import { formValidator } from "./formValidator.js";
+import { FormValidator } from "./validator.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const editButton = document.querySelector(".profile__edit-button");
@@ -10,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputJob = document.querySelector(".popup__input-job");
   const profileJob = document.querySelector(".profile__job");
   const popupEdit = document.querySelector(".popup__edit");
+  const formEdit = document.querySelector(".popup__form-edit");
 
   function popupOpen() {
     popupEdit.style.display = "block";
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
     popupOpen();
     inputName.value = profileName.textContent;
     inputJob.value = profileJob.textContent;
-    inputJob.value = "";
-    inputName.value = "";
+    inputJob.value = " ";
+    inputName.value = " ";
   });
   closeButton.addEventListener("click", function (evt) {
     popupClose();
@@ -99,85 +99,24 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(linkValue);
     const newCard = new Cards(linkValue, value);
     const cardElement = newCard.generateCard();
-
     cardContainer.prepend(cardElement);
     formAdd.reset();
-    formValidator.resetErrors();
     popupAddClose();
   });
   console.log(typeof Cards);
   console.log(new Cards("url", "nombre"));
 
   const likeButton = document.querySelectorAll(".card__like-button");
-  likeButton.forEach((button) => {
-    button.addEventListener("click", function () {
-      this.classList.toggle("active");
-    });
-  });
 
-  //validador
-  // const editForm = document.querySelector(".popup__form-edit");
-  // const addForm = document.querySelector(".popup__form-add");
+  // console.log("Formulario de edición:", formEdit);
+  // console.log("Formulario de edición:", formAdd);
 
-  // function showError(input, errorId, message) {
-  //   const errorElement = document.getElementById(errorId);
-  //   input.classList.add("input-error");
-  //   errorElement.textContent = message;
-  //   errorElement.style.display = "block";
-  // }
-
-  // function hideError(input, errorId) {
-  //   const errorElement = document.getElementById(errorId);
-  //   input.classList.remove("input-error");
-  //   errorElement.textContent = "";
-  //   errorElement.style.display = "none";
-  // }
-
-  // function validateField(input, errorId) {
-  //   if (!input.validity.valid) {
-  //     if (input.validity.valueMissing) {
-  //       showError(input, errorId, "Este campo es obligatorio");
-  //     } else if (input.validity.tooShort) {
-  //       showError(
-  //         input,
-  //         errorId,
-  //         `El texto debe tener al menos ${input.minLength} caracteres`
-  //       );
-  //     } else if (input.validity.typeMismatch && input.type === "url") {
-  //       showError(input, errorId, "Introduce un enlace válido");
-  //     }
-  //     return false;
-  //   }
-  //   hideError(input, errorId);
-  //   return true;
-  // }
-
-  // function validateForm(form) {
-  //   const inputs = form.querySelectorAll("input");
-  //   let isValid = true;
-
-  //   inputs.forEach((input) => {
-  //     const errorId = input.name + "-error";
-  //     if (!validateField(input, errorId)) {
-  //       isValid = false;
-  //     }
-  //   });
-
-  //   return isValid;
-  // }
-  // [editForm, addForm].forEach((form) => {
-  //   const inputs = form.querySelectorAll("input");
-  //   inputs.forEach((input) => {
-  //     const errorId = input.name + "-error";
-  //     input.addEventListener("input", () => validateField(input, errorId));
-  //   });
-
-  //   form.addEventListener("submit", (e) => {
-  //     e.preventDefault();
-  //     if (validateForm(form)) {
-  //       alert("Formulario enviado exitosamente");
-  //       form.reset();
-  //     }
-  //   });
-  // });
+  if (formEdit) {
+    const validatorEdit = new FormValidator(formEdit);
+    validatorEdit.attachValidation();
+  }
+  if (formAdd) {
+    const validatorAdd = new FormValidator(formAdd);
+    validatorAdd.attachValidation();
+  }
 });

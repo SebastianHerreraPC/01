@@ -17,6 +17,11 @@ export class Cards {
       .addEventListener("click", () => {
         this._element.remove();
       });
+    this._element
+      .querySelector(".card__like-button")
+      .addEventListener("click", function () {
+        this.classList.toggle("card__like-button_active");
+      });
   }
   generateCard() {
     this._element = this._getTemplate();
