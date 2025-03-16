@@ -11,6 +11,7 @@ export class Cards {
 
     return newCard;
   }
+
   setEventListeners() {
     this._element
       .querySelector(".card__trash-button")
