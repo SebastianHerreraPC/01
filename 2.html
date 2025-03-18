@@ -1,82 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Vista previa de la tarjeta</title>
-    <link rel="stylesheet" href="2.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./2.css" />
+    <title>Creador de listas de reproducción</title>
   </head>
-  <body class="page">
-    <main class="content page__content">
-      <div class="filter content__filter">
-        El modo de visualización:
-        <button
-          type="button"
-          class="button filter__button filter__button_type_grid"
-          data-elements-type="grid"
-        ></button>
-        <button
-          type="button"
-          class="button filter__button filter__button_type_column"
-          data-elements-type="column"
-        ></button>
+  <body>
+    <header class="header">
+      <img
+        src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_logo-black-eng.png"
+        alt=""
+        class="header__logo"
+      />
+      <p class="header__logo-sub">Creador de listas de reproducción</p>
+    </header>
+    <main class="container">
+      <div class="cover">
+        <div class="cover__image"></div>
+        <h1 class="cover__heading">lista de reproducción</h1>
       </div>
-      <section class="card-list">
-        <header class="heading">
-          <h2 class="heading__title">Resultado</h2>
-        </header>
-        <div class="card-list__items">
-          <!-- Contenedor para agregar tarjetas -->
-        </div>
-      </section>
+      <div class="block">
+        <form name="myForm">
+          <h3>Agregar una canción</h3>
+          <div class="input">
+            <input
+              type="text"
+              name="song"
+              placeholder="título"
+              class="input__text input__text_song"
+            />
+            <input
+              type="text"
+              name="artist"
+              placeholder="artista"
+              class="input__text input__text_artist"
+            />
+            <button
+              class="input__btn input__btn_add input__btn_disabled"
+              disabled
+            >
+              Agregar
+            </button>
+          </div>
+        </form>
+      </div>
     </main>
-    <div class="popup">
-      <div class="popup__content">
-        <button type="button" class="popup__close"></button>
-        <img
-          src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/oop/moved_card_detail.jpg"
-          alt=""
-          class="popup__image"
-        />
-        <p class="popup__caption"></p>
-      </div>
-    </div>
-
-    <!-- Plantilla de tarjeta horizontal  -->
-    <template class="horizontal-card">
-      <article class="card card_content_horizontal">
-        <div
-          class="card__image"
-          style="
-            background-image: url('https://practicum-content.s3.us-west-1.amazonaws.com/web-code/oop/moved_card_detail.jpg');
-          "
-        ></div>
-        <div class="card__description">
-          <h3 class="card__title">Robot Kit</h3>
-          <p class="card__info">
-            Robot Kit es una popular serie de kits de construcción de robots de
-            la empresa Robotis.a serie incluye varios kits diseñados tanto para
-            principiantes como para usuarios avanzados.En este kit, encontrarás
-            todo lo que necesitas para construir robots únicos y hacer diseños
-            personalizados.El set incluye un software de programación, un mando
-            a distancia, servomotores y mucho más.
-          </p>
-          <p class="card__property"></p>
-          <span class="card__span-accent">
-            Precio:
-            <span class="card__price-property"> $1800 </span>
-          </span>
-          <button class="button classic-button card__button">
-            Añadir al carrito
-          </button>
-        </div>
-      </article>
-    </template>
-
-    <script src="2.js"></script>
+    <script src="./2.js"></script>
   </body>
 </html>
