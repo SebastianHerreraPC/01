@@ -1,34 +1,22 @@
-const tastySweets = {
-  breakfast: "jam",
-  lunch: "honey",
-  dinner: "fudge",
-};
-const { breakfast, lunch, dinner } = tastySweets;
-
-console.log(breakfast, lunch, dinner);
-
-const comida = { sabor: "fresa", platillo: "helado" };
-const queHay = ({ sabor, platillo }) => {
-  return `Hoy hay ${platillo} de ${sabor}`;
-};
-console.log(queHay(comida));
-
-const countUserPosts = ({ posts }) => {
-  return posts.length;
-};
-
-const user1 = {
-  id: 2294611830,
-  username: "leonardo.dv",
-  posts: [
-    { comment: "Hombre de Vitruvio", dateCreated: 1490 },
-    { comment: "Retrato de un músico", dateCreated: 1490 },
-    {
-      comment: "Retrato de un hombre con tiza roja #autorretrato",
-      dateCreated: 1512,
-    },
-  ],
-};
-
-countUserPosts(user1);
-console.log(countUserPosts(user1));
+fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "0280092d-0304-4fd9-a855-09d04b9ad5a3",
+  },
+  body: JSON.stringify({
+    isLiked: false,
+    _id: "670ffe8fc26271001a120bd3",
+    name: "Sebas Herrera",
+    link: "www.google.com",
+    owner: "66580699c0e236433e7de561",
+    createdAt: "2024-10-16T17:57:35.839Z",
+  }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("Respuesta del servidor:", data);
+  })
+  .catch((error) => {
+    console.error("Hubo un error:", error);
+  });
