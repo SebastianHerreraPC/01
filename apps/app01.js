@@ -1,5 +1,6 @@
 import { Cards } from "./cards.js";
 import { FormValidator } from "./validator.js";
+import { Section } from "./section.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const editButton = document.querySelector(".profile__edit-button");
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const formEdit = document.querySelector(".popup__form-edit");
 
   function popupOpen() {
-    popupEdit.style.display = "block";
+    // popupEdit.style.display = "block";
   }
   function popupClose() {
     popupEdit.style.display = "none";
@@ -71,12 +72,21 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  initialCards.forEach((item) => {
+  function renderCard(item) {
     const card = new Cards(item.link, item.name);
     const cardElement = card.generateCard();
-
     document.querySelector(".cards__container").append(cardElement);
-  });
+  }
+  const cardsSection = new Section(
+    {
+      items: initialCards,
+      render: (item) => {
+        renderCard(item);
+      },
+    },
+    ".cards__container"
+  );
+  cardsSection.renderItems();
 
   function popupAddOpen() {
     popupAdd.style.display = "block";
@@ -99,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(linkValue);
     const newCard = new Cards(linkValue, value);
     const cardElement = newCard.generateCard();
-    cardContainer.prepend(cardElement);
+    cardSection.addItem(cardElement);
     formAdd.reset();
     popupAddClose();
   });
@@ -115,8 +125,3 @@ document.addEventListener("DOMContentLoaded", function () {
     validatorAdd.attachValidation();
   }
 });
-
-// console.log(typeof Cards);
-// console.log(new Cards("url", "nombre"));
-// console.log("Formulario de edición:", formEdit);
-// console.log("Formulario de edición:", formAdd);

@@ -20,8 +20,8 @@ export class Cards {
       });
     this._element
       .querySelector(".card__like-button")
-      .addEventListener("click", function () {
-        this.classList.toggle("card__like-button_active");
+      .addEventListener("click", (evt) => {
+        evt.target.classList.toggle("card__like-button_active");
       });
   }
   generateCard() {
