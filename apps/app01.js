@@ -87,8 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   addButton.addEventListener("click", () => {
     popupAddInstance.open();
-    placeName.value = " ";
-    placeImg.value = " ";
+    placeName.value = "";
+    placeImg.value = "";
   });
 
   closeAddButton.addEventListener("click", () => {
