@@ -34,3 +34,37 @@ export class Popup {
     this._popup.addEventListener("mousedown", this._closeByClick);
   }
 }
+export class PopupWithForm extends Popup {
+  constructor(popupSelector, handleFormSubmit) {
+    super(popupSelector);
+    this._handleFormSubmit = handleFormSubmit;
+    this._form = this._popup.querySelector("form");
+    this._inputList = Array.from(this._form.querySelectorAll("input"));
+    console.log("PopupWithForm constructor:", { popupSelector, this: this });
+  }
+
+  _getInputValues() {
+    const formValues = {};
+    this._inputList.forEach((input) => {
+      formValues[input.name] = input.value;
+    });
+    console.log("Form input values collected:", formValues);
+    return formValues;
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      console.log("Form submit event triggered");
+      const inputValues = this._getInputValues();
+      this._handleFormSubmit(inputValues);
+    });
+  }
+
+  close() {
+    super.close();
+    this._form.reset();
+    console.log("Popup closed and form reset");
+  }
+}
