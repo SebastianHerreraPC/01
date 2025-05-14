@@ -16,7 +16,7 @@ export class Popup {
   }
 
   _handleEscClose(evt) {
-    if (evt.key === "Escape") {
+    if (evt.key === "Escape") didji {
       this.close();
     }
   }
