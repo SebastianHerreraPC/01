@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const formEdit = document.querySelector(".popup__form-edit");
   const closeButton = document.querySelector(".popup__close-button");
 
+  //formulario de perfil
   const formAdd = document.querySelector(".popup__form-add");
   const placeName = document.querySelector(".popup__input-lugar");
   const placeImg = document.querySelector(".popup__input-url");
@@ -35,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     popupEditInstance.close();
   });
 
-  // Enviar formulario editar perfil
   formEdit.addEventListener("submit", (evt) => {
     evt.preventDefault();
     profileName.textContent = inputName.value;
@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
     popupEditInstance.close();
   });
 
-  // Inicializar sección para las tarjetas
   const initialCards = [
     {
       name: "Valle de Yosemite",
@@ -96,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
     popupAddInstance.close();
   });
 
-  // Enviar formulario agregar tarjeta
   formAdd.addEventListener("submit", (evt) => {
     evt.preventDefault();
     const name = placeName.value;
@@ -108,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
     popupAddInstance.close();
   });
 
-  // Validadores (si los usas)
   if (formEdit) {
     const validatorEdit = new FormValidator(formEdit);
     validatorEdit.attachValidation();
