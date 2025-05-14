@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardsSection = new Section(
     {
       items: initialCards,
-      render: (item) => renderCard(item),
+      renderer: (item) => renderCard(item),
     },
     cardContainerSelector
   );
