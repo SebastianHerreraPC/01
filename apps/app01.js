@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     jobSelector: ".profile__job",
     avatarSelector: ".profile__avatar-img",
   });
-
+prueba de git
   const popupEditCard = new PopupWithForm(".popup__edit", (formData) => {});
   popupEditCard.setEventListeners();
 
