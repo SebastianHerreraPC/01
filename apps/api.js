@@ -4,7 +4,7 @@ class Api {
     this._headers = headers;
   }
   initialCards() {
-    fetch(this._url + "/cards", {
+    return fetch(this._url + "/cards", {
       headers: this._headers,
     }).then((res) => {
       if (!res.ok) throw new Error(`Error: ${res.status}`);
