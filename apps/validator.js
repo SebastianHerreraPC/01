@@ -8,6 +8,7 @@ export class FormValidator {
   }
 
   showError(input, errorId, message) {
+    console.log(errorId);
     const errorElement = document.getElementById(errorId);
     input.classList.add("input-error");
     errorElement.textContent = message;

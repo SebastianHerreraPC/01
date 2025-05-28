@@ -1,12 +1,13 @@
-import { Cards } from "./cards.js";
-import { FormValidator } from "./validator.js";
-import { Section } from "./section.js";
-import { Popup } from "./popups.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./userInfo.js";
+import { Cards } from "./apps/cards.js";
+import { FormValidator } from "./apps/validator.js";
+import { Section } from "./apps/section.js";
+import { Popup } from "./apps/popups.js";
+import { PopupWithForm } from "./apps/PopupWithForm.js";
+import { UserInfo } from "./apps/userInfo.js";
+import { api } from "./apps/api.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const token = "be99c1cb-2d4a-4521-b59a-f28ca399a70a";
+  const token = "b76c096b-39a4-4c42-9515-2bc0a8a3cd39";
 
   const editButton = document.querySelector(".profile__edit-button");
   const profileName = document.querySelector(".profile__name-text");
@@ -92,15 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
     cardContainerSelector
   );
 
-  fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
-    headers: {
-      authorization: token,
-    },
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error(`Error: ${res.status}`);
-      return res.json();
-    })
+  api
+    .initialCards()
     .then((cards) => {
       console.log("Tarjetas cargadas:", cards);
       cardsSection._items = cards;
