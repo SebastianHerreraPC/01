@@ -15,10 +15,10 @@ export class FormValidator {
     errorElement.style.display = "block";
   }
 
-  hideError(input, errorId) {
+  hideError(input, errorId, message) {
     const errorElement = document.getElementById(errorId);
     input.classList.remove("input-error");
-    errorElement.textContent = "";
+    errorElement.textContent = message;
     errorElement.style.display = "none";
   }
 
