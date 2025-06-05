@@ -1,7 +1,9 @@
 export class Cards {
-  constructor(image, text) {
+  constructor(image, text, cardID, isLiked) {
     this._image = image;
     this._text = text;
+    this._cardID = cardID;
+    this._isLiked = isLiked;
   }
   _getTemplate() {
     const newCard = document

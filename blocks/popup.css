@@ -66,8 +66,21 @@
 .popup__input:invalid {
   border-bottom: 1px solid red;
 }
+
 .popup__input:valid {
   border-bottom: 1px solid green;
+}
+.place_error:valid {
+  display: none;
+}
+.url_error:valid {
+  display: none;
+}
+.input__error {
+  display: none;
+  color: black;
+  background-color: white;
+  font-size: 10px;
 }
 
 .popup__edit {
@@ -104,4 +117,12 @@
   align-items: flex-start;
   margin-right: 315px;
   margin-top: 10px;
+}
+.url-error {
+  background-color: white;
+  color: black;
+}
+#place-error {
+  background-color: white;
+  color: black;
 }

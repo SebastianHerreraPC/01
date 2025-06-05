@@ -11,6 +11,33 @@ class Api {
       return res.json();
     });
   }
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      if (!res.ok) throw new Error(`Error: ${res.status}`);
+      return res.json();
+    });
+  }
+  likeCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((res) => {
+      if (!res.ok) throw new Error(`Error: ${res.status}`);
+      return res.json();
+    });
+  }
+  unlikeCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      if (!res.ok) throw new Error(`Error: ${res.status}`);
+      return res.json();
+    });
+  }
 }
 
 const api = new Api("https://around-api.es.tripleten-services.com/v1", {
