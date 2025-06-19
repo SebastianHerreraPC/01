@@ -80,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function renderCard(item) {
-    const card = new Cards(item.link, item.name);
+    console.log(item);
+    const card = new Cards(item.link, item.name, item._id);
     const cardElement = card.generateCard();
     document.querySelector(cardContainerSelector).append(cardElement);
   }

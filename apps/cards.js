@@ -1,3 +1,4 @@
+import { api } from "./api.js";
 export class Cards {
   constructor(image, text, cardID, isLiked) {
     this._image = image;
@@ -18,8 +19,13 @@ export class Cards {
     this._element
       .querySelector(".card__trash-button")
       .addEventListener("click", () => {
+        console.log(`${this._cardID}`);
         this._element.remove();
+        api.deleteCard(this._cardID).catch((err) => {
+          console.error("Error deleting card:", err);
+        });
       });
+
     this._element
       .querySelector(".card__like-button")
       .addEventListener("click", (evt) => {
